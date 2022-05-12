@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entete.component.scss']
 })
 export class EnteteComponent implements OnInit {
-
+  estConnecte:boolean =true;
   constructor() { }
 
   ngOnInit(): void {

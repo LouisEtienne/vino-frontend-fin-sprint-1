@@ -1,1 +1,11 @@
-<p>produit works!</p>
+<ng-container *ngIf="estEditable; else nonEditable">
+    <p>Nom : <input [(ngModel)]="produit.nom"></p>    
+    <p>Prix : <input [(ngModel)]="produit.prix"></p>    
+    <p>Rabais : <input type="checkbox" [(ngModel)]="produit.rabais"></p>    
+</ng-container>
+
+<ng-template #nonEditable>
+    <article>
+        <p>{{produit.nom}}<span *ngIf="produit.rabais == true">(En solde)</span> </p>
+    </article>
+</ng-template>

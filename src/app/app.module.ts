@@ -9,6 +9,7 @@ import { ProduitComponent } from './produit/produit.component';
 import { EnteteComponent } from './entete/entete.component';
 import { NonTrouveComponent } from './non-trouve/non-trouve.component';
 import { DetailsProduitComponent } from './details-produit/details-produit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DetailsProduitComponent } from './details-produit/details-produit.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
