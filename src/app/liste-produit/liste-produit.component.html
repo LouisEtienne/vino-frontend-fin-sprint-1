@@ -1,0 +1,7 @@
+<section class="liste">
+    <h1>Mes produits</h1>
+    <article *ngFor = "let unProduit of produit">
+        <p>{{unProduit.nom}} <span *ngIf = "unProduit.rabais">(En solde)</span> </p>
+    </article>
+</section>
+
