@@ -1,11 +1,18 @@
-<ng-container *ngIf="estEditable; else nonEditable">
-    <p>Nom : <input [(ngModel)]="produit.nom"></p>    
-    <p>Prix : <input [(ngModel)]="produit.prix"></p>    
-    <p>Rabais : <input type="checkbox" [(ngModel)]="produit.rabais"></p>    
-</ng-container>
+<section class="produit">
+    <ng-container *ngIf="estEditable; else nonEditable">
+        <form [formGroup]="modifForm">
+            <p>Nom : <input formControlName="nom"></p>    
+            <p>Brasserie : <input  formControlName="brasserie"></p>    
+            <p>Description : <textarea  formControlName="description"></textarea></p>    
+            <button [disabled]="!modifForm.dirty || !modifForm.valid" (click)="modifierProduit()">Modifier</button>
+            <button [disabled]="!modifForm.dirty" (click)="annuler()">Annuler</button>
+            <button (click)="effacer()">Effacer</button>
+        </form>
+    </ng-container>
 
-<ng-template #nonEditable>
-    <article>
-        <p>{{produit.nom}}<span *ngIf="produit.rabais == true">(En solde)</span> </p>
-    </article>
-</ng-template>
+    <ng-template #nonEditable>
+        <article>
+            <p>{{produit.nom}}<span *ngIf="produit.rabais == true">(En solde)</span> </p>
+        </article>
+    </ng-template>
+</section>

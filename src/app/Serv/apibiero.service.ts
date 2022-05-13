@@ -8,7 +8,7 @@ import { IListeProduit } from '../iliste-produit';
   providedIn: 'root'
 })
 export class ApibieroService {
-  url:string = "http://127.0.0.1:8000/webservice/php/biere";
+  url:string = "http://127.0.0.1:8000/webservice/php/biere/";
   constructor(private http:HttpClient) { }
 
   getBieres():Observable<IListeProduit>{
@@ -20,5 +20,30 @@ export class ApibieroService {
     );*/
 
 
+  }
+
+  modifierBiere(data:IProduit):Observable<any>{
+    //delete data.date_ajout; // Pour effacer des propriétés... 
+
+    let httpOption = {
+      headers : new HttpHeaders({
+        'Content-type' : 'application/json',
+        'Authorization' : 'Basic '+ btoa("biero:biero")
+      })
+    };
+    
+    return this.http.post<IProduit>(this.url + data.id_biere, data, httpOption);
+  }
+  effacerBiere(id:number):Observable<any>{
+    
+
+    let httpOption = {
+      headers : new HttpHeaders({
+        'Content-type' : 'application/json',
+        'Authorization' : 'Basic '+ btoa("biero:biero")
+      })
+    };
+    
+    return this.http.delete<IProduit>(this.url + id, httpOption);
   }
 }
