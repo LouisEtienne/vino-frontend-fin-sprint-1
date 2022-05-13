@@ -10,6 +10,7 @@ import { EnteteComponent } from './entete/entete.component';
 import { NonTrouveComponent } from './non-trouve/non-trouve.component';
 import { DetailsProduitComponent } from './details-produit/details-produit.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

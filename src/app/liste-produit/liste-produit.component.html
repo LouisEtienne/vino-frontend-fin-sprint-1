@@ -1,15 +1,15 @@
 <section class="liste">
     <h1>Mes produits</h1>
-    <p>Est éditable ? <input type="checkbox" [(ngModel)]="estEditable">
+    <p>Est éditable ? <input [disabled]="!valideConnecter()" type="checkbox" (change)="valideConnecter()" [(ngModel)]="estEditable">
     <!--<article *ngFor = "let unProduit of produit">
         <p>{{unProduit.nom}} <span *ngIf = "unProduit.rabais">(En solde)</span> </p>
     </article>-->
     <app-produit *ngFor = "let unProduit of produit" [produit]="unProduit" [estEditable]="estEditable"></app-produit>
     
-    <h1>Containeur</h1>
+   <!-- <h1>Containeur</h1>
     <ng-container *ngFor="let unProduit of produit">
         <app-produit [produit]="unProduit" [estEditable]="estEditable"></app-produit>
     </ng-container>
-
+-->
 </section>
 
