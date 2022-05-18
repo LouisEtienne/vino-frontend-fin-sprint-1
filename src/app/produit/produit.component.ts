@@ -42,6 +42,8 @@ export class ProduitComponent implements OnInit {
   }
 
   effacer():void{
-    this.bieroServ.effacerBiere(this.produit.id_biere).subscribe((data:any)=>{console.log(data)});
+    this.bieroServ.effacerBiere(this.produit.id_biere).subscribe((data:any)=> {
+      console.log(data);
+    });
   }
 }
