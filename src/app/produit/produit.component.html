@@ -12,7 +12,9 @@
 
     <ng-template #nonEditable>
         <article>
-            <p>{{produit.nom}}<span *ngIf="produit.rabais == true">(En solde)</span> </p>
+            <a routerLink="/produit/{{produit.id_biere}}">
+                <p>{{produit.nom}}<span *ngIf="produit.rabais == true">(En solde)</span> </p>
+            </a>
         </article>
     </ng-template>
 </section>

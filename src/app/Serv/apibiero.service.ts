@@ -22,6 +22,17 @@ export class ApibieroService {
 
   }
 
+  getBiere(id:number|string):Observable<IProduit>{
+    console.log("getBiere");
+    return this.http.get<IProduit>(this.url+id);
+
+    /*return [...Array(3)].map(
+      (item, index) => {return <IProduit>{nom : "element "+ index, "prix": (10 + index * index), "rabais" : !(index % 3) }}
+    );*/
+
+
+  }
+
   modifierBiere(data:IProduit):Observable<any>{
     //delete data.date_ajout; // Pour effacer des propriétés... 
 
@@ -34,9 +45,9 @@ export class ApibieroService {
     
     return this.http.post<IProduit>(this.url + data.id_biere, data, httpOption);
   }
+
   effacerBiere(id:number):Observable<any>{
     
-
     let httpOption = {
       headers : new HttpHeaders({
         'Content-type' : 'application/json',

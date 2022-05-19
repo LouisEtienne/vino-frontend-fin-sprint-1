@@ -18,7 +18,7 @@ export class ListeProduitComponent implements OnInit {
 
   ngOnInit(): void {
     this.bieroServ.getBieres().subscribe((data:IListeProduit)=>{this.produit = data.data});
-    
+    this.authServ.setTitre("Liste des produits");
     console.log(this.produit);
   }
 

@@ -6,10 +6,14 @@
     </article>-->
     <app-produit *ngFor = "let unProduit of produit" [produit]="unProduit" [estEditable]="estEditable"></app-produit>
     
-   <!-- <h1>Containeur</h1>
+    <h1>Containeur</h1>
     <ng-container *ngFor="let unProduit of produit">
         <app-produit [produit]="unProduit" [estEditable]="estEditable"></app-produit>
     </ng-container>
--->
+    <h1>Containeur</h1>
+    <ng-container *ngFor="let unProduit of produit">
+        <app-produit [produit]="unProduit" [estEditable]="estEditable"></app-produit>
+    </ng-container>
+
 </section>
 
