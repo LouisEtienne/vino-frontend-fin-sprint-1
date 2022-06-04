@@ -1,12 +1,12 @@
-<header>
-<h1>{{sTitre}}</h1>
-    <nav>
-        <a routerLink="/">Accueil</a>
-        <a routerLink="/produit">Liste des produits</a>
-        <!--<a href="/produit">Liste des produits (href)</a>-->
-    </nav>
-    <section>
-        <p>Est connecté  ? <input type="checkbox" (change)="changeConnexion()" [(ngModel)]="estConnecte"></p>
+<mat-toolbar class="header__nav" color="warn">
+    <button class="header__logo" routerLink="/" mat-fab aria-label="Example icon button with a delete icon">
+        Vino
+    </button>
+    <span><h1 class="header__title">&nbsp;{{sTitre}}</h1></span>
+   <!-- <span class="example-spacer"></span>
+    <span>Connect? <input type="checkbox" (change)="changeConnexion()" [(ngModel)]="estConnecte">&nbsp;</span>
+    
+    <a mat-raised-button routerLink="/produit">Liste des bouteilles</a>--> 
 
-    </section>
-</header>
+   <!--<a mat-icon-button routerLink="/"><mat-icon>home</mat-icon></a>--> 
+</mat-toolbar>

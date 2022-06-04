@@ -1,8 +1,18 @@
 export interface IProduit {
-    id_biere:number;
+    id_bouteille_cellier:string;
+    id_bouteille:string;
+    date_achat:string;
+    garde_jusqua:string;
+    notes:string;
+    prix:string // Non obligatoire
+    quantite:string;
+    millesime:string;
+    id:string; //id bouteille
     nom:string;
-    brasserie:string;
-    prix:number;
-    rabais:boolean;
-    description?:string // Non obligatoire
+    type:string;
+    image:string;
+    code_saq:string;
+    url_saq:string;
+    pays:string;
+    description:string;
 }

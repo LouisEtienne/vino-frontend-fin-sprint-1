@@ -1,4 +1,4 @@
-<section class="produit">
+<!--<section class="produit">
     <ng-container *ngIf="estEditable; else nonEditable">
         <form [formGroup]="modifForm">
             <p>Nom : <input formControlName="nom"></p>    
@@ -8,13 +8,16 @@
             <button [disabled]="!modifForm.dirty" (click)="annuler()">Annuler</button>
             <button (click)="effacer()">Effacer</button>
         </form>
-    </ng-container>
+    </ng-container>-->
 
-    <ng-template #nonEditable>
+   <!--  <ng-template #nonEditable>
         <article>
-            <a routerLink="/produit/{{produit.id_biere}}">
-                <p>{{produit.nom}}<span *ngIf="produit.rabais == true">(En solde)</span> </p>
+            
+           <a routerLink="/produit/{{produit.id_biere}}">
+                <p>{{produit.nom}}</p>
             </a>
         </article>
     </ng-template>
-</section>
+</section>-->
+
+<!--<span *ngIf="produit.rabais == true">(En solde)</span> -->

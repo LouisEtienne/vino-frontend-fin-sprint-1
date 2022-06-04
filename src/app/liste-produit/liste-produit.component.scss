@@ -1,0 +1,60 @@
+table {
+    width: 100%;
+  }
+
+.liste__btn{
+  background-color: rgb(126, 10, 10);
+  color: rgb(233, 236, 205);
+  margin-right: 10px;
+}
+
+.liste__btn-saq{
+  background-color:  rgb(126, 10, 10);
+  color:rgb(170, 159, 60);
+  font-weight: bold;
+}
+
+.liste__btn-saq-creer{
+  background-color: rgb(79, 2, 2);
+  color:rgb(170, 159, 60);
+  font-weight: bold;
+}
+// .mat-sort-header-container {
+//   align-items: center;
+// }
+section{
+  margin: 0 4vw;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background-color: rgb(79, 2, 2);
+  color:rgb(170, 159, 60);
+  font-weight: bolder;
+  
+}
+
+// td p {
+//   margin-left: 1vw;
+// }
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.create-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 1vw 0 0 0;
+}
+
+.bouteille__img{
+  margin: 0.5vw 0;
+  width: 4vw;
+}
+
