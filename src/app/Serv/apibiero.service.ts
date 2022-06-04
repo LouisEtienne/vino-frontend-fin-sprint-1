@@ -11,6 +11,7 @@ export class ApibieroService {
   url:string = "http://127.0.0.1:8000/webservice/php/bouteille/";
   constructor(private http:HttpClient) { }
 
+  //Louis
   getBouteillesCellier():Observable<IListeProduit>{
     console.log("getBouteilles");
     return this.http.get<IListeProduit>(this.url);
@@ -19,6 +20,18 @@ export class ApibieroService {
     );*/
   }
 
+
+
+
+
+
+
+
+
+
+
+
+// PRochainmeent
   getBiere(id:number|string):Observable<IProduit>{
     console.log("getBouteille");
     return this.http.get<IProduit>(this.url+id);
@@ -30,6 +43,19 @@ export class ApibieroService {
 
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+//Dmitriy
   modifierBiere(data:IProduit):Observable<any>{
     //delete data.date_ajout; // Pour effacer des propriétés... 
 
@@ -43,6 +69,19 @@ export class ApibieroService {
     return this.http.post<IProduit>(this.url + data.id_bouteille, data, httpOption);
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+  //Vsvolod
   ajouterBiere(data:IProduit):Observable<any>{
     let httpOption = {
       headers : new HttpHeaders({
@@ -52,6 +91,47 @@ export class ApibieroService {
     };
     return this.http.put<IProduit>(this.url, data, httpOption);
   }
+
+
+
+
+
+
+
+
+
+
+
+  //ajouterQuantiteBouteilleCellier (Fonction à developper pour Louis)
+
+
+
+
+
+
+
+
+
+
+  //boireQuantiteBouteilleCellier (Fonction à developper pour Bita)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   effacerBiere(id:number):Observable<any>{
     
