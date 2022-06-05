@@ -10,8 +10,8 @@ import { IProduit } from '../iproduit';
 })
 
 export class DialogModifComponent implements OnInit {
-  @Input() biere!:IProduit;
-  modifierBiereForm!:FormGroup;
+  @Input() bouteille!:IProduit;
+  modifierBouteilleForm!:FormGroup;
 
 
     constructor(
@@ -23,7 +23,7 @@ export class DialogModifComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.modifierBiereForm = this.formBuilder.group({
+        this.modifierBouteilleForm = this.formBuilder.group({
             date_achat: ['', Validators.required],
             garde_jusqua: ['', Validators.required],
             notes: ['', Validators.required],
@@ -32,32 +32,32 @@ export class DialogModifComponent implements OnInit {
             millesime : ['',Validators.required]
         });
 
-        //console.log(this.editData)
+        console.log(this.editData)
         if(this.editData){
-            this.modifierBiereForm.controls['date_achat'].setValue(this.editData.date_achat);
-            this.modifierBiereForm.controls['garde_jusqua'].setValue(this.editData.garde_jusqua);
-            this.modifierBiereForm.controls['notes'].setValue(this.editData.notes);
-            this.modifierBiereForm.controls['prix'].setValue(this.editData.prix);
-            this.modifierBiereForm.controls['quantite'].setValue(this.editData.quantite);
-            this.modifierBiereForm.controls['millesime'].setValue(this.editData.millesime);
+            this.modifierBouteilleForm.controls['date_achat'].setValue(this.editData.date_achat);
+            this.modifierBouteilleForm.controls['garde_jusqua'].setValue(this.editData.garde_jusqua);
+            this.modifierBouteilleForm.controls['notes'].setValue(this.editData.notes);
+            this.modifierBouteilleForm.controls['prix'].setValue(this.editData.prix);
+            this.modifierBouteilleForm.controls['quantite'].setValue(this.editData.quantite);
+            this.modifierBouteilleForm.controls['millesime'].setValue(this.editData.millesime);
         }
     
     }
 
     modifierBiere():void{
-    if(this.modifierBiereForm.valid){
-        let biere:IProduit = this.modifierBiereForm.value;  
-        biere.id_bouteille = this.editData.id_bouteille;
-        this.bieroServ.modifierBiere(biere).subscribe({
-        next:(reponse)=>{
-            console.log('biere modifiée')
-            this.dialogRef.close('mod');  
-        },
-        error:(reponse)=>{
-            this.dialogRef.close('mod');
+        if(this.modifierBouteilleForm.valid){
+            let bouteille:IProduit = this.modifierBouteilleForm.value;  
+            bouteille.id_bouteille_cellier = this.editData.id_bouteille_cellier;
+            this.bieroServ.modifierBouteille(bouteille).subscribe({
+            next:(reponse)=>{
+                console.log('bouteille modifiée')
+                this.dialogRef.close('mod');  
+            },
+            error:(reponse)=>{
+                this.dialogRef.close('mod');
+            }
+            });
         }
-        });
-    }
     
     }
 

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Modifier une bouteille</h1>
 <div mat-dialog-content>
     <h3>Nom de la bouteille: {{editData.nom}}</h3>
-    <form [formGroup]="modifierBiereForm" action="">
+    <form [formGroup]="modifierBouteilleForm" action="">
         <mat-form-field appearance="outline">
             <mat-label>Date d'achat :</mat-label>
             <input matInput formControlName="date_achat" placeholder="Modifier la bouteille">

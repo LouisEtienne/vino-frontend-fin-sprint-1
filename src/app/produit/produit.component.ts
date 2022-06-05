@@ -33,7 +33,7 @@ export class ProduitComponent implements OnInit {
     console.log(this.modifForm)
     let biere:IProduit = this.modifForm.value;  
     biere.id_bouteille = this.produit.id_bouteille;
-    this.bieroServ.modifierBiere(biere).subscribe((data:any)=>{console.log(data)});
+    this.bieroServ.modifierBouteille(biere).subscribe((data:any)=>{console.log(data)});
   }
   annuler():void{
     this.modifForm.controls.nom.setValue(this.produit.nom);

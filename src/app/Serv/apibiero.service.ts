@@ -57,13 +57,10 @@ export class ApibieroService {
 
 
 //Dmitriy
-  modifierBiere(data:IProduit):Observable<any>{
-    //delete data.date_ajout; // Pour effacer des propriétés... 
-
+  modifierBouteille(data:IProduit):Observable<any>{
     let httpOption = {
       headers : new HttpHeaders({
-        'Content-type' : 'application/json',
-        'Authorization' : 'Basic '+ btoa("biero:biero")
+        'Content-type' : 'application/json'
       })
     };
     
