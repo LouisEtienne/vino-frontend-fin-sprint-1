@@ -76,10 +76,10 @@ export class ListeProduitComponent implements OnInit {
     }
   }
 
-  editDialog(biere:IProduit): void {
+  editDialog(bouteille:IProduit): void {
     const dialogRef = this.dialog.open(DialogModifComponent, {
       width: '30%',
-      data:biere
+      data:bouteille
     }).afterClosed().subscribe(res=>{
       this.getAllBouteillesCellier();
     });

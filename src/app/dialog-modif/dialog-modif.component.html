@@ -1,14 +1,35 @@
 <h1 mat-dialog-title>Modifier une bouteille</h1>
 <div mat-dialog-content>
+    <h3>Nom de la bouteille: {{editData.nom}}</h3>
     <form [formGroup]="modifierBiereForm" action="">
         <mat-form-field appearance="outline">
-            <mat-label>Nom de la bouteille:</mat-label>
-            <input matInput formControlName="nom" placeholder="Modifier la bouteille" value="[nom]">
+            <mat-label>Date d'achat :</mat-label>
+            <input matInput formControlName="date_achat" placeholder="Modifier la bouteille">
             <mat-hint></mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label>Nom du pays:</mat-label>
-            <input matInput formControlName="brasserie" placeholder="Ajouter le pays">
+            <mat-label>Garder jusqu'à :</mat-label>
+            <input matInput formControlName="garde_jusqua" placeholder="Modifier la bouteille">
+            <mat-hint></mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Notes :</mat-label>
+            <input matInput formControlName="notes" placeholder="Modifier la bouteille">
+            <mat-hint></mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Prix :</mat-label>
+            <input matInput formControlName="prix" placeholder="Modifier la bouteille">
+            <mat-hint></mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Quantité :</mat-label>
+            <input matInput formControlName="quantite" placeholder="Modifier la bouteille">
+            <mat-hint></mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Millesime :</mat-label>
+            <input matInput formControlName="millesime" placeholder="Ajouter le pays">
             <mat-hint></mat-hint>
         </mat-form-field>
     </form>

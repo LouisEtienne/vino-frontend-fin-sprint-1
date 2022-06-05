@@ -14,39 +14,52 @@ export class DialogModifComponent implements OnInit {
   modifierBiereForm!:FormGroup;
 
 
-constructor(private formBuilder : FormBuilder, public dialogRef: MatDialogRef<DialogModifComponent>,@Inject(MAT_DIALOG_DATA) public editData: IProduit, private bieroServ :ApibieroService) {
-}
+    constructor(
+                    private formBuilder: FormBuilder,
+                    public dialogRef: MatDialogRef<DialogModifComponent>,
+                    @Inject(MAT_DIALOG_DATA) public editData: IProduit,
+                    private bieroServ: ApibieroService
+                ) { }
 
-ngOnInit(): void {
-  this.modifierBiereForm = this.formBuilder.group({
-    nom : ['',Validators.required],
-    brasserie : ['',Validators.required]
-  });
+    ngOnInit(): void {
 
-  console.log(this.editData)
-  if(this.editData){
-    // this.modifierBiereForm.controls['nom'].setValue(this.editData.nom);
-    // this.modifierBiereForm.controls['type'].setValue(this.editData.type);
-  }
-  
-}
+        this.modifierBiereForm = this.formBuilder.group({
+            date_achat: ['', Validators.required],
+            garde_jusqua: ['', Validators.required],
+            notes: ['', Validators.required],
+            prix: ['', Validators.required],
+            quantite : ['',Validators.required],
+            millesime : ['',Validators.required]
+        });
 
-modifierBiere():void{
-  if(this.modifierBiereForm.valid){
-    let biere:IProduit = this.modifierBiereForm.value;  
-    biere.id_bouteille = this.editData.id_bouteille;
-    this.bieroServ.modifierBiere(biere).subscribe({
-      next:(reponse)=>{
-        console.log('biere modifiée')
-        this.dialogRef.close('mod');  
-      },
-      error:(reponse)=>{
-        this.dialogRef.close('mod');
-      }
-    });
-  }
-  
-}
+        //console.log(this.editData)
+        if(this.editData){
+            this.modifierBiereForm.controls['date_achat'].setValue(this.editData.date_achat);
+            this.modifierBiereForm.controls['garde_jusqua'].setValue(this.editData.garde_jusqua);
+            this.modifierBiereForm.controls['notes'].setValue(this.editData.notes);
+            this.modifierBiereForm.controls['prix'].setValue(this.editData.prix);
+            this.modifierBiereForm.controls['quantite'].setValue(this.editData.quantite);
+            this.modifierBiereForm.controls['millesime'].setValue(this.editData.millesime);
+        }
+    
+    }
+
+    modifierBiere():void{
+    if(this.modifierBiereForm.valid){
+        let biere:IProduit = this.modifierBiereForm.value;  
+        biere.id_bouteille = this.editData.id_bouteille;
+        this.bieroServ.modifierBiere(biere).subscribe({
+        next:(reponse)=>{
+            console.log('biere modifiée')
+            this.dialogRef.close('mod');  
+        },
+        error:(reponse)=>{
+            this.dialogRef.close('mod');
+        }
+        });
+    }
+    
+    }
 
 //   onNoClick(): void {
 //     this.dialogRef.close();

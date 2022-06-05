@@ -20,6 +20,7 @@ export class ApibieroService {
     );*/
   }
 
+  //Dmitriy
 
 
 
@@ -66,7 +67,7 @@ export class ApibieroService {
       })
     };
     
-    return this.http.post<IProduit>(this.url + data.id_bouteille, data, httpOption);
+    return this.http.post<IProduit>(this.url + data.id_bouteille_cellier, data, httpOption);
   }
 
 

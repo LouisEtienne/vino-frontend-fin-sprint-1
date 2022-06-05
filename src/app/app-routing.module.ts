@@ -13,7 +13,7 @@ const routes: Routes = [
   {path : "", component:ListeProduitComponent}, //, canActivate:[GardienConnexionGuard]
   {path : "produit/:id", component:DetailsProduitComponent, canActivate:[GardienConnexionGuard]},
   {path : "", component:DialogBiereComponent, canActivate:[GardienConnexionGuard]},
-  {path : "", component:DialogModifComponent, canActivate:[GardienConnexionGuard]},
+  {path : "modifier/:id", component:DialogModifComponent, canActivate:[GardienConnexionGuard]},
   {path : "**", component:NonTrouveComponent},
 
 ];
