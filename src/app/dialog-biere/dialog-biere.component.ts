@@ -10,37 +10,43 @@ import { IProduit } from '../iproduit';
   styleUrls: ['./dialog-biere.component.scss']
 })
 export class DialogBiereComponent implements OnInit {
-  @Input() biere!:IProduit;
-  creerBiereForm!:FormGroup;
+    @Input() biere!:IProduit;
+    creerBouteilleForm!:FormGroup;
+        bouteilles: any;
 
+    constructor(private formBuilder : FormBuilder, public dialogRef: MatDialogRef<DialogBiereComponent>,@Inject(MAT_DIALOG_DATA) biere: IProduit, private bieroServ :ApibieroService) {
+    }
 
-constructor(private formBuilder : FormBuilder, public dialogRef: MatDialogRef<DialogBiereComponent>,@Inject(MAT_DIALOG_DATA) biere: IProduit, private bieroServ :ApibieroService) {
-}
+    ngOnInit(): void {
+        this.bieroServ.getListeBouteilles().subscribe((data: any) => { this.bouteilles = data.data; })
+    
+        this.creerBouteilleForm = this.formBuilder.group({
+            millesime : ['',Validators.required],
+            quantite : ['',Validators.required],
+            date_achat : ['',Validators.required],
+            prix : ['',Validators.required],
+            garde_jusqua : ['',Validators.required],
+            notes : ['',Validators.required]
+        })
+    
+    }
 
-ngOnInit(): void {
-  this.creerBiereForm = this.formBuilder.group({
-    nom : ['',Validators.required],
-    brasserie : ['',Validators.required]
-  })
-  
-}
-
-ajouterBiere():void{
-  if(this.creerBiereForm.valid){
-    console.log(this.creerBiereForm.value)
-    let biere:IProduit = this.creerBiereForm.value;  
-    console.log(biere)
-    this.bieroServ.ajouterBiere(biere).subscribe({
-      next:(reponse)=>{
-        
-        console.log('Vin ajoutee')
-        this.dialogRef.close('add');  
-      },
-      error:(reponse)=>{
-        this.dialogRef.close('add');
-        
-      }
-    });
+ajouterBouteille():void{
+  if(this.creerBouteilleForm.valid){
+    console.log(this.creerBouteilleForm.value)
+    let bouteilles:any = this.creerBouteilleForm.value;  
+    console.log(bouteilles)
+    //this.bieroServ.ajouterBiere(bouteilles).subscribe({
+    //  next:(reponse)=>{
+    //    
+    //    console.log('Vin ajoutee')
+    //    this.dialogRef.close('add');  
+    //  },
+    //  error:(reponse)=>{
+    //    this.dialogRef.close('add');
+    //    
+    //  }
+    //});
   }
   
 }

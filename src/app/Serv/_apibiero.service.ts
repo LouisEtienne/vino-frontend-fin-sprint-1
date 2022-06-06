@@ -20,7 +20,6 @@ export class ApibieroService {
     );*/
   }
 
-  //Dmitriy
 
 
 
@@ -57,16 +56,17 @@ export class ApibieroService {
 
 
 //Dmitriy
-  modifierBouteille(data:IProduit):Observable<any>{
+  modifierBiere(data:IProduit):Observable<any>{
+    //delete data.date_ajout; // Pour effacer des propriétés... 
+
     let httpOption = {
       headers : new HttpHeaders({
-          'Content-type': 'application/json',
-          'Authorization' : 'Basic '+ btoa("biero:biero")
+        'Content-type' : 'application/json',
+        'Authorization' : 'Basic '+ btoa("biero:biero")
       })
     };
-    //console.log(data.id_bouteille_cellier);
     
-    return this.http.post<IProduit>(this.url + data.id, data, httpOption);
+    return this.http.post<IProduit>(this.url + data.id_bouteille, data, httpOption);
   }
 
 
@@ -82,7 +82,17 @@ export class ApibieroService {
 
 
   //Vsvolod
-  ajouterBiere(data:IProduit):Observable<any>{
+
+
+  getBouteille():Observable<IListeProduit>{
+    console.log("getBouteille");
+    return this.http.get<IListeProduit>(this.url);
+    /*return [...Array(3)].map(
+      (item, index) => {return <IProduit>{nom : "element "+ index, "prix": (10 + index * index), "rabais" : !(index % 3) }}
+    );*/
+  }
+
+  ajouterBouteille(data:IProduit):Observable<any>{
     let httpOption = {
       headers : new HttpHeaders({
         'Content-type' : 'application/json',
@@ -92,16 +102,14 @@ export class ApibieroService {
     return this.http.put<IProduit>(this.url, data, httpOption);
   }
 
-  getListeBouteilles():Observable<IListeProduit>{
+
+  getListeBouteille():Observable<IListeProduit>{
     console.log("getListeBouteille");
-    return this.http.get<IListeProduit>(this.url+'bouteilles');
+    return this.http.get<IListeProduit>(this.url);
     /*return [...Array(3)].map(
       (item, index) => {return <IProduit>{nom : "element "+ index, "prix": (10 + index * index), "rabais" : !(index % 3) }}
     );*/
   }
-
-
-
 
 
 
