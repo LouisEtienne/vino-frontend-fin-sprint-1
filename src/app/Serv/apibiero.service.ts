@@ -60,11 +60,13 @@ export class ApibieroService {
   modifierBouteille(data:IProduit):Observable<any>{
     let httpOption = {
       headers : new HttpHeaders({
-        'Content-type' : 'application/json'
+          'Content-type': 'application/json',
+          'Authorization' : 'Basic '+ btoa("biero:biero")
       })
     };
+    console.log(data.id_bouteille_cellier);
     
-    return this.http.post<IProduit>(this.url + data.id_bouteille_cellier, data, httpOption);
+    return this.http.post<IProduit>(this.url + data.id, data, httpOption);
   }
 
 

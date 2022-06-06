@@ -20,16 +20,20 @@ export class DialogModifComponent implements OnInit {
                     @Inject(MAT_DIALOG_DATA) public editData: IProduit,
                     private bieroServ: ApibieroService
                 ) { }
+    
+    dateRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+    nombreEntierRegex = /^\d+$/;
+    nombreFlottantRegex = /^[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?$/;
+    anneeRegex = /^(18|19|20)[\d]{2,2}$/;
 
     ngOnInit(): void {
-
         this.modifierBouteilleForm = this.formBuilder.group({
-            date_achat: ['', Validators.required],
-            garde_jusqua: ['', Validators.required],
-            notes: ['', Validators.required],
-            prix: ['', Validators.required],
-            quantite : ['',Validators.required],
-            millesime : ['',Validators.required]
+            date_achat: ['', [Validators.pattern(this.dateRegex)]],
+            garde_jusqua: ['', [Validators.pattern(this.dateRegex)]],
+            notes: ['', [Validators.pattern(this.nombreEntierRegex)]],
+            prix: ['', [Validators.pattern(this.nombreFlottantRegex)]],
+            quantite : ['', [Validators.pattern(this.nombreEntierRegex)]],
+            millesime : ['', [Validators.pattern(this.anneeRegex)]]
         });
 
         console.log(this.editData)
@@ -41,16 +45,16 @@ export class DialogModifComponent implements OnInit {
             this.modifierBouteilleForm.controls['quantite'].setValue(this.editData.quantite);
             this.modifierBouteilleForm.controls['millesime'].setValue(this.editData.millesime);
         }
-    
     }
 
     modifierBiere():void{
         if(this.modifierBouteilleForm.valid){
-            let bouteille:IProduit = this.modifierBouteilleForm.value;  
-            bouteille.id_bouteille_cellier = this.editData.id_bouteille_cellier;
+            let bouteille: IProduit = this.modifierBouteilleForm.value;  
+
+            bouteille.id = this.editData.id_bouteille_cellier;
             this.bieroServ.modifierBouteille(bouteille).subscribe({
             next:(reponse)=>{
-                console.log('bouteille modifiée')
+                console.log(bouteille)
                 this.dialogRef.close('mod');  
             },
             error:(reponse)=>{
