@@ -64,7 +64,7 @@ export class ApibieroService {
           'Authorization' : 'Basic '+ btoa("biero:biero")
       })
     };
-    console.log(data.id_bouteille_cellier);
+    //console.log(data.id_bouteille_cellier);
     
     return this.http.post<IProduit>(this.url + data.id, data, httpOption);
   }
