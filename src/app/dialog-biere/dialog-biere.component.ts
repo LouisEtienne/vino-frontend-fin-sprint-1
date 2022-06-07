@@ -12,27 +12,39 @@ import { IProduit } from '../iproduit';
 export class DialogBiereComponent implements OnInit {
     @Input() biere!:IProduit;
     creerBouteilleForm!:FormGroup;
-        bouteilles: any;
+    bouteilles: any;
+    getBouteilleId: any;
 
-    constructor(private formBuilder : FormBuilder, public dialogRef: MatDialogRef<DialogBiereComponent>,@Inject(MAT_DIALOG_DATA) biere: IProduit, private bieroServ :ApibieroService) {
-    }
+    constructor(
+                    private formBuilder: FormBuilder,
+                    public dialogRef: MatDialogRef<DialogBiereComponent>,
+                    @Inject(MAT_DIALOG_DATA) biere: IProduit,
+                    private bieroServ: ApibieroService
+                ) { }
+
+    dateRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+    nombreEntierRegex = /^\d+$/;
+    nombreFlottantRegex = /^[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?$/;
+    anneeRegex = /^(18|19|20)[\d]{2,2}$/;
 
     ngOnInit(): void {
         this.bieroServ.getListeBouteilles().subscribe((data: any) => { this.bouteilles = data.data; })
     
         this.creerBouteilleForm = this.formBuilder.group({
-            millesime : ['',Validators.required],
-            quantite : ['',Validators.required],
-            date_achat : ['',Validators.required],
-            prix : ['',Validators.required],
-            garde_jusqua : ['',Validators.required],
-            notes : ['',Validators.required]
+            id_bouteille: ['', [Validators.required]],
+            date_achat: ['', [Validators.pattern(this.dateRegex)]],
+            garde_jusqua: ['', [Validators.pattern(this.dateRegex)]],
+            notes: ['', [Validators.pattern(this.nombreEntierRegex)]],
+            prix: ['', [Validators.pattern(this.nombreFlottantRegex)]],
+            quantite : ['', [Validators.pattern(this.nombreEntierRegex)]],
+            millesime : ['', [Validators.pattern(this.anneeRegex)]]
         })
     
     }
 
     ajouterBouteille():void{
-        if(this.creerBouteilleForm.valid){
+        if (this.creerBouteilleForm.valid) {
+            this.creerBouteilleForm.value.id_bouteille = this.getBouteilleId;
             console.log(this.creerBouteilleForm.value)
             let bouteilles:any = this.creerBouteilleForm.value;  
             console.log(bouteilles)
@@ -48,12 +60,11 @@ export class DialogBiereComponent implements OnInit {
             }
             });
         }
-    
     }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 
   
 
