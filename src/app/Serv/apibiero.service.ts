@@ -82,7 +82,7 @@ export class ApibieroService {
 
 
   //Vsvolod
-  ajouterBiere(data:IProduit):Observable<any>{
+  ajouterBouteille(data:IProduit):Observable<any>{
     let httpOption = {
       headers : new HttpHeaders({
         'Content-type' : 'application/json',
@@ -93,7 +93,7 @@ export class ApibieroService {
   }
 
   getListeBouteilles():Observable<IListeProduit>{
-    console.log("getListeBouteille");
+    console.log(this.http.get<IListeProduit>(this.url+'bouteilles'));
     return this.http.get<IListeProduit>(this.url+'bouteilles');
     /*return [...Array(3)].map(
       (item, index) => {return <IProduit>{nom : "element "+ index, "prix": (10 + index * index), "rabais" : !(index % 3) }}

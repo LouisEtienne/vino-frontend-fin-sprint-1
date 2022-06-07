@@ -31,25 +31,25 @@ export class DialogBiereComponent implements OnInit {
     
     }
 
-ajouterBouteille():void{
-  if(this.creerBouteilleForm.valid){
-    console.log(this.creerBouteilleForm.value)
-    let bouteilles:any = this.creerBouteilleForm.value;  
-    console.log(bouteilles)
-    //this.bieroServ.ajouterBiere(bouteilles).subscribe({
-    //  next:(reponse)=>{
-    //    
-    //    console.log('Vin ajoutee')
-    //    this.dialogRef.close('add');  
-    //  },
-    //  error:(reponse)=>{
-    //    this.dialogRef.close('add');
-    //    
-    //  }
-    //});
-  }
-  
-}
+    ajouterBouteille():void{
+        if(this.creerBouteilleForm.valid){
+            console.log(this.creerBouteilleForm.value)
+            let bouteilles:any = this.creerBouteilleForm.value;  
+            console.log(bouteilles)
+            this.bieroServ.ajouterBouteille(bouteilles).subscribe({
+            next:(reponse)=>{
+                
+                console.log('Vin ajoutee')
+                this.dialogRef.close('add');  
+            },
+            error:(reponse)=>{
+                this.dialogRef.close('add');
+                
+            }
+            });
+        }
+    
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
