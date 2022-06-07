@@ -10,44 +10,61 @@ import { IProduit } from '../iproduit';
   styleUrls: ['./dialog-biere.component.scss']
 })
 export class DialogBiereComponent implements OnInit {
-  @Input() biere!:IProduit;
-  creerBiereForm!:FormGroup;
+    @Input() biere!:IProduit;
+    creerBouteilleForm!:FormGroup;
+    bouteilles: any;
+    getBouteilleId: any;
 
+    constructor(
+                    private formBuilder: FormBuilder,
+                    public dialogRef: MatDialogRef<DialogBiereComponent>,
+                    @Inject(MAT_DIALOG_DATA) biere: IProduit,
+                    private bieroServ: ApibieroService
+                ) { }
 
-constructor(private formBuilder : FormBuilder, public dialogRef: MatDialogRef<DialogBiereComponent>,@Inject(MAT_DIALOG_DATA) biere: IProduit, private bieroServ :ApibieroService) {
-}
+    dateRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+    nombreEntierRegex = /^\d+$/;
+    nombreFlottantRegex = /^[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?$/;
+    anneeRegex = /^(18|19|20)[\d]{2,2}$/;
 
-ngOnInit(): void {
-  this.creerBiereForm = this.formBuilder.group({
-    nom : ['',Validators.required],
-    brasserie : ['',Validators.required]
-  })
-  
-}
+    ngOnInit(): void {
+        this.bieroServ.getListeBouteilles().subscribe((data: any) => { this.bouteilles = data.data; })
+    
+        this.creerBouteilleForm = this.formBuilder.group({
+            id_bouteille: ['', [Validators.required]],
+            date_achat: ['', [Validators.pattern(this.dateRegex)]],
+            garde_jusqua: ['', [Validators.pattern(this.dateRegex)]],
+            notes: ['', [Validators.pattern(this.nombreEntierRegex)]],
+            prix: ['', [Validators.pattern(this.nombreFlottantRegex)]],
+            quantite : ['', [Validators.pattern(this.nombreEntierRegex)]],
+            millesime : ['', [Validators.pattern(this.anneeRegex)]]
+        })
+    
+    }
 
-ajouterBiere():void{
-  if(this.creerBiereForm.valid){
-    console.log(this.creerBiereForm.value)
-    let biere:IProduit = this.creerBiereForm.value;  
-    console.log(biere)
-    this.bieroServ.ajouterBiere(biere).subscribe({
-      next:(reponse)=>{
-        
-        console.log('Vin ajoutee')
-        this.dialogRef.close('add');  
-      },
-      error:(reponse)=>{
-        this.dialogRef.close('add');
-        
-      }
-    });
-  }
-  
-}
+    ajouterBouteille():void{
+        if (this.creerBouteilleForm.valid) {
+            this.creerBouteilleForm.value.id_bouteille = this.getBouteilleId;
+            console.log(this.creerBouteilleForm.value)
+            let bouteilles:any = this.creerBouteilleForm.value;  
+            console.log(bouteilles)
+            this.bieroServ.ajouterBouteille(bouteilles).subscribe({
+            next:(reponse)=>{
+                
+                console.log('Vin ajoutee')
+                this.dialogRef.close('add');  
+            },
+            error:(reponse)=>{
+                this.dialogRef.close('add');
+                
+            }
+            });
+        }
+    }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 
   
 

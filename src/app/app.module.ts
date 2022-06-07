@@ -23,7 +23,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {DialogBiereComponent } from './dialog-biere/dialog-biere.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DialogModifComponent } from './dialog-modif/dialog-modif.component';
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -55,6 +55,7 @@ import { DialogModifComponent } from './dialog-modif/dialog-modif.component';
     MatInputModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatSelectModule
   ],
 
   
