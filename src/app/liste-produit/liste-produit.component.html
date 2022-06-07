@@ -1,6 +1,6 @@
 <section>
     <div class="create-btn">
-        <a class="liste__btn-saq-creer fill" mat-raised-button routerLink="" (click)="openDialog()">Créer une bouteille</a>
+        <a class="liste__btn-saq-creer fill" mat-raised-button routerLink="" (click)="openDialog()">Ajouter une bouteille</a>
     </div>
     <mat-form-field appearance="standard">
     
@@ -47,10 +47,10 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>Action</th>
                 <td mat-cell *matCellDef="let bouteille"> 
-                    <button class="liste__btn" routerLink=""  mat-mini-fab aria-label="Example icon button with a home icon"><!--(click)="effacerBiere(bouteille.id_bouteille)"-->
+                    <button class="liste__btn" routerLink="" (click)="ajouterQuantiteBouteilleCellier(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon"><!--(click)="effacerBiere(bouteille.id_bouteille)"-->
                         <mat-icon>add</mat-icon>
                     </button>
-                    <button class="liste__btn" routerLink=""  mat-mini-fab aria-label="Example icon button with a home icon"><!--(click)="effacerBiere(bouteille.id_bouteille)"-->
+                    <button class="liste__btn" routerLink="" (click)="boireQuantiteBouteilleCellier(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon"><!--(click)="effacerBiere(bouteille.id_bouteille)"-->
                     <mat-icon>remove</mat-icon>
                     </button>
                     <button class="liste__btn" routerLink="" (click)="editDialog(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon">

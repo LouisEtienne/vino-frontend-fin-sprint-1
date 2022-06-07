@@ -96,6 +96,31 @@ export class ListeProduitComponent implements OnInit {
     });
   }
 
+  ajouterQuantiteBouteilleCellier(data:IProduit){
+    this.bieroServ.getBouteillesCellierQuantiteAjoutee(data).subscribe({
+    next:(res)=>{
+      this.dataSource = new MatTableDataSource(res.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    },
+    error:(err)=>{
+      alert("erreur")
+    }
+  })
+}
+
+  boireQuantiteBouteilleCellier(data:IProduit){
+    this.bieroServ.deleteBouteillesCellierQuantiteAjoutee(data).subscribe({
+    next:(res)=>{
+      this.dataSource = new MatTableDataSource(res.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    },
+    error:(err)=>{
+      alert("erreur")
+    }
+  })
+}
 
   valideConnecter():boolean{
     if(this.authServ.getConnexion() ==false && this.estEditable == true){

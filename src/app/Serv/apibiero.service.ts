@@ -109,18 +109,40 @@ export class ApibieroService {
 
 
   //ajouterQuantiteBouteilleCellier (Fonction à developper pour Louis)
-
-
-
-
-
-
-
-
+  getBouteillesCellierQuantiteAjoutee(data:IProduit):Observable<IListeProduit>{
+    console.log("getBouteilles");
+    let httpOption = {
+      headers : new HttpHeaders({
+        'Content-type' : 'application/json',
+        'Authorization' : 'Basic '+ btoa("biero:biero")//A changer dans SPRINT 2
+      })                                                                      //0                           /1       /2                    /3                              
+    };                                                                        //1/                          /cellier/10                   /bouteille                                           
+    return this.http.put<IListeProduit>(this.url+data.id_bouteille_cellier+"/quantite/",httpOption);
+  }
 
 
   //boireQuantiteBouteilleCellier (Fonction à developper pour Bita)
 
+  // deleteBouteillesCellierQuantiteAjoutee(data:IProduit):Observable<IListeProduit>{
+  //   console.log("getBouteilles");
+  //   let httpOption = {
+  //     headers : new HttpHeaders({
+  //       'Content-type' : 'application/json',
+  //       'Authorization' : 'Basic '+ btoa("biero:biero")
+  //     })                                                                      //0                           /1       /2                    /3                              
+  //   };                                                                        //1/                          /cellier/10                   /bouteille                                           
+  //   return this.http.delete<IListeProduit>(this.url+data.id_bouteille_cellier+"/quantite/",httpOption);
+  // }
+  deleteBouteillesCellierQuantiteAjoutee(data:IProduit):Observable<IListeProduit>{
+    console.log("getBouteilles");
+    let httpOption = {
+      headers : new HttpHeaders({
+        'Content-type' : 'application/json',
+        'Authorization' : 'Basic '+ btoa("biero:biero")
+      })                                                                      //0                           /1       /2                    /3                              
+    };                                                                        //1/                          /cellier/10                   /bouteille                                           
+    return this.http.delete<IListeProduit>(this.url+data.id_bouteille_cellier+"/quantite/",httpOption);
+  }
 
 
 
