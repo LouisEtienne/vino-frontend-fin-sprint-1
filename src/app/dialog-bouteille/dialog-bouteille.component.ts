@@ -9,6 +9,7 @@ import { IProduit } from '../iproduit';
   templateUrl: './dialog-bouteille.component.html',
   styleUrls: ['./dialog-bouteille.component.scss']
 })
+    
 export class DialogBouteilleComponent implements OnInit {
     @Input() bouteille!:IProduit;
     creerBouteilleForm!:FormGroup;
@@ -22,6 +23,7 @@ export class DialogBouteilleComponent implements OnInit {
                     private bieroServ: ApibieroService
                 ) { }
 
+    /** Modèles d'expression régulière */
     dateRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
     nombreEntierRegex = /^\d+$/;
     nombreFlottantRegex = /^[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?$/;
@@ -39,9 +41,9 @@ export class DialogBouteilleComponent implements OnInit {
             quantite : ['', [Validators.required, Validators.pattern(this.nombreEntierRegex)]],
             millesime : ['', [Validators.required, Validators.pattern(this.anneeRegex)]]
         })
-    
     }
 
+    /** Fonction pour ajouter une bouteille au cellier */
     ajouterBouteille():void{
         if (this.creerBouteilleForm.valid) {
             this.creerBouteilleForm.value.id_bouteille = this.getBouteilleId;
@@ -49,15 +51,13 @@ export class DialogBouteilleComponent implements OnInit {
             let bouteilles:any = this.creerBouteilleForm.value;  
             console.log(bouteilles)
             this.bieroServ.ajouterBouteille(bouteilles).subscribe({
-            next:(reponse)=>{
-                
-                console.log('Vin ajoutee')
-                this.dialogRef.close('add');  
-            },
-            error:(reponse)=>{
-                this.dialogRef.close('add');
-                
-            }
+                next:(reponse)=>{
+                    console.log('Vin ajoutee')
+                    this.dialogRef.close('add');  
+                },
+                error:(reponse)=>{
+                    this.dialogRef.close('add');
+                }
             });
         }
     }
