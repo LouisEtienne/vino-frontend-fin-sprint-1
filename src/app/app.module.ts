@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ListeProduitComponent } from './liste-produit/liste-produit.component';
-import { ProduitComponent } from './produit/produit.component';
 import { EnteteComponent } from './entete/entete.component';
 import { NonTrouveComponent } from './non-trouve/non-trouve.component';
 import { DetailsProduitComponent } from './details-produit/details-produit.component';
@@ -31,7 +30,6 @@ import {MatSelectModule} from '@angular/material/select';
     AppComponent,
     AccueilComponent,
     ListeProduitComponent,
-    ProduitComponent,
     EnteteComponent,
     NonTrouveComponent,
     DetailsProduitComponent,
