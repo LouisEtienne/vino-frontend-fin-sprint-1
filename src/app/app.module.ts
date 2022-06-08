@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -23,7 +23,7 @@ import {DialogBouteilleComponent } from './dialog-bouteille/dialog-bouteille.com
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DialogModifComponent } from './dialog-modif/dialog-modif.component';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import {MatSelectModule} from '@angular/material/select';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -53,7 +54,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule
   ],
 
   
