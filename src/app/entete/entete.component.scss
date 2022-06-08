@@ -8,7 +8,10 @@ a {
 }
 
 mat-toolbar{
+    top: 0;
     padding: 0 4vw;
+    position: fixed;
+    z-index: 100;
 }
 
 .header__nav{
