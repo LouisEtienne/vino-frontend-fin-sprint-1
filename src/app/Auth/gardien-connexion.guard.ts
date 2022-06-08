@@ -14,7 +14,6 @@ export class GardienConnexionGuard implements CanActivate {
       if(this.etatLogin == false){
         this.router.navigate(["/"]);
       }
-      console.log("etat connexion", bLogin);
     })
 
   }
@@ -26,7 +25,6 @@ export class GardienConnexionGuard implements CanActivate {
       if(this.etatLogin){
         res = true;
       }
-      //console.log(res);
       return res;//this.authServ.getConnexion();
     
     //return false;

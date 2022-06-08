@@ -3,16 +3,16 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ApibieroService } from '../Serv/apibiero.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IProduit } from '../iproduit';
+
 @Component({
-  selector: 'app-dialog-modif',
-  templateUrl: './dialog-modif.component.html',
-  styleUrls: ['./dialog-modif.component.scss']
+    selector: 'app-dialog-modif',
+    templateUrl: './dialog-modif.component.html',
+    styleUrls: ['./dialog-modif.component.scss']
 })
 
 export class DialogModifComponent implements OnInit {
-  @Input() bouteille!:IProduit;
-  modifierBouteilleForm!:FormGroup;
-
+    @Input() bouteille!:IProduit;
+    modifierBouteilleForm!:FormGroup;
 
     constructor(
                     private formBuilder: FormBuilder,
@@ -21,12 +21,14 @@ export class DialogModifComponent implements OnInit {
                     private bieroServ: ApibieroService
                 ) { }
     
+    /** Modèles d'expression régulière */
     dateRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
     nombreEntierRegex = /^\d+$/;
     nombreFlottantRegex = /^[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?$/;
     anneeRegex = /^(18|19|20)[\d]{2,2}$/;
 
     ngOnInit(): void {
+        /** Forme et validation des données saisies */
         this.modifierBouteilleForm = this.formBuilder.group({
             date_achat: ['', [Validators.pattern(this.dateRegex)]],
             garde_jusqua: ['', [Validators.pattern(this.dateRegex)]],
@@ -36,7 +38,7 @@ export class DialogModifComponent implements OnInit {
             millesime : ['', [Validators.pattern(this.anneeRegex)]]
         });
 
-        console.log(this.editData)
+        /** Affectation des données du formulaire aux valeurs à envoyer à la base de données */
         if(this.editData){
             this.modifierBouteilleForm.controls['date_achat'].setValue(this.editData.date_achat);
             this.modifierBouteilleForm.controls['garde_jusqua'].setValue(this.editData.garde_jusqua);
@@ -47,14 +49,13 @@ export class DialogModifComponent implements OnInit {
         }
     }
 
+    /** Envoi de nouvelles données du formulaire vers la base de données */
     modifierBiere():void{
         if(this.modifierBouteilleForm.valid){
             let bouteille: IProduit = this.modifierBouteilleForm.value;  
-
             bouteille.id = this.editData.id_bouteille_cellier;
             this.bieroServ.modifierBouteille(bouteille).subscribe({
             next:(reponse)=>{
-                console.log(bouteille)
                 this.dialogRef.close('mod');  
             },
             error:(reponse)=>{
@@ -62,11 +63,6 @@ export class DialogModifComponent implements OnInit {
             }
             });
         }
-    
     }
-
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
 
 }

@@ -31,7 +31,6 @@ export class AuthService {
 
   setConnexion(etatConnexion:boolean):void {
     this.etatConnexion = etatConnexion;
-    console.log(this.etatConnexion);
     sessionStorage.setItem("estConnecte", this.etatConnexion.toString());
     this.estConnecte.next(etatConnexion);
   }
