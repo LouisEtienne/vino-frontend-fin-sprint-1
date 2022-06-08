@@ -1,24 +1,24 @@
-import {Component, Inject, OnInit, Input} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, Inject, OnInit, Input } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApibieroService } from '../Serv/apibiero.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IProduit } from '../iproduit';
 
 @Component({
-  selector: 'app-dialog-biere',
-  templateUrl: './dialog-biere.component.html',
-  styleUrls: ['./dialog-biere.component.scss']
+  selector: 'app-dialog-bouteille',
+  templateUrl: './dialog-bouteille.component.html',
+  styleUrls: ['./dialog-bouteille.component.scss']
 })
-export class DialogBiereComponent implements OnInit {
-    @Input() biere!:IProduit;
+export class DialogBouteilleComponent implements OnInit {
+    @Input() bouteille!:IProduit;
     creerBouteilleForm!:FormGroup;
     bouteilles: any;
     getBouteilleId: any;
 
     constructor(
                     private formBuilder: FormBuilder,
-                    public dialogRef: MatDialogRef<DialogBiereComponent>,
-                    @Inject(MAT_DIALOG_DATA) biere: IProduit,
+                    public dialogRef: MatDialogRef<DialogBouteilleComponent>,
+                    @Inject(MAT_DIALOG_DATA) bouteille: IProduit,
                     private bieroServ: ApibieroService
                 ) { }
 
@@ -32,12 +32,12 @@ export class DialogBiereComponent implements OnInit {
     
         this.creerBouteilleForm = this.formBuilder.group({
             id_bouteille: ['', [Validators.required]],
-            date_achat: ['', [Validators.pattern(this.dateRegex)]],
-            garde_jusqua: ['', [Validators.pattern(this.dateRegex)]],
-            notes: ['', [Validators.pattern(this.nombreEntierRegex)]],
-            prix: ['', [Validators.pattern(this.nombreFlottantRegex)]],
-            quantite : ['', [Validators.pattern(this.nombreEntierRegex)]],
-            millesime : ['', [Validators.pattern(this.anneeRegex)]]
+            date_achat: ['', [Validators.required, Validators.pattern(this.dateRegex)]],
+            garde_jusqua: ['', [Validators.required, Validators.pattern(this.dateRegex)]],
+            notes: ['', [Validators.required, Validators.pattern(this.nombreEntierRegex)]],
+            prix: ['', [Validators.required, Validators.pattern(this.nombreFlottantRegex)]],
+            quantite : ['', [Validators.required, Validators.pattern(this.nombreEntierRegex)]],
+            millesime : ['', [Validators.required, Validators.pattern(this.anneeRegex)]]
         })
     
     }
@@ -65,7 +65,5 @@ export class DialogBiereComponent implements OnInit {
     onNoClick(): void {
         this.dialogRef.close();
     }
-
-  
 
 }

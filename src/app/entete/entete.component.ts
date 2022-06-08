@@ -1,14 +1,14 @@
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogBiereComponent } from '../dialog-biere/dialog-biere.component';
+import { DialogBouteilleComponent } from '../dialog-bouteille/dialog-bouteille.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../Auth/auth.service';
 import { IProduit } from '../iproduit';
 import { ApibieroService } from '../Serv/apibiero.service';
 import { DialogModifComponent } from '../dialog-modif/dialog-modif.component';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -19,13 +19,7 @@ import {MatTableDataSource} from '@angular/material/table';
 export class EnteteComponent implements OnInit {
   estConnecte!:boolean;
   sTitre!:string;
-  biere!:IProduit;
-
-  // displayedColumns: string[] = ["image","nom","brasserie","date_ajout", "date_modif", "action"];
-  // dataSource !: MatTableDataSource<IProduit>;
-
-  // @ViewChild(MatPaginator) paginator !: MatPaginator;
-  // @ViewChild(MatSort) sort !: MatSort;
+  bouteille!:IProduit;
 
   constructor(private authServ:AuthService, private bieroServ:ApibieroService, public dialog: MatDialog) {
     
@@ -48,9 +42,9 @@ export class EnteteComponent implements OnInit {
 
   // openDialog(): void {
   //   this.getAllBieres();
-  //   this.dialog.open(DialogBiereComponent, {
+  //   this.dialog.open(DialogBouteilleComponent, {
   //     width: '30%',
-  //     data: this.biere
+  //     data: this.bouteille
   //   }).afterClosed().subscribe(res=>{
   //     this.getAllBieres();
   //   });

@@ -4,10 +4,10 @@ import { IProduit } from '../iproduit';
 import { ApibieroService } from '../Serv/apibiero.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogModifComponent } from '../dialog-modif/dialog-modif.component';
-import { DialogBiereComponent } from '../dialog-biere/dialog-biere.component';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { DialogBouteilleComponent } from '../dialog-bouteille/dialog-bouteille.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-liste-produit',
@@ -88,7 +88,7 @@ export class ListeProduitComponent implements OnInit {
 
   openDialog(): void {
     this.getAllBouteillesCellier();
-    this.dialog.open(DialogBiereComponent, {
+    this.dialog.open(DialogBouteilleComponent, {
       width: '30%',
       data: this.biere
     }).afterClosed().subscribe(res=>{

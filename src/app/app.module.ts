@@ -20,7 +20,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
-import {DialogBiereComponent } from './dialog-biere/dialog-biere.component';
+import {DialogBouteilleComponent } from './dialog-bouteille/dialog-bouteille.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DialogModifComponent } from './dialog-modif/dialog-modif.component';
 import {MatSelectModule} from '@angular/material/select';
@@ -35,10 +35,10 @@ import {MatSelectModule} from '@angular/material/select';
     EnteteComponent,
     NonTrouveComponent,
     DetailsProduitComponent,
-    DialogBiereComponent,
+    DialogBouteilleComponent,
     DialogModifComponent
   ],
-  entryComponents:[DialogBiereComponent],
+  entryComponents:[DialogBouteilleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
