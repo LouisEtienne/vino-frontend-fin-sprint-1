@@ -30,8 +30,10 @@ export class DialogBouteilleComponent implements OnInit {
     anneeRegex = /^(18|19|20)[\d]{2,2}$/;
 
     ngOnInit(): void {
+        /** Obtenir une nomenclature des bouteilles importées de la SAQ */
         this.bieroServ.getListeBouteilles().subscribe((data: any) => { this.bouteilles = data.data; })
-    
+        
+        /** Forme et validation des données saisies */
         this.creerBouteilleForm = this.formBuilder.group({
             id_bouteille: ['', [Validators.required]],
             date_achat: ['', [Validators.required, Validators.pattern(this.dateRegex)]],

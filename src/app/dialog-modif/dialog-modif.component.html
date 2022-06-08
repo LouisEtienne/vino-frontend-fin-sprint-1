@@ -2,6 +2,7 @@
 <div mat-dialog-content>
     <h3>Nom de la bouteille: {{editData.nom}}</h3>
     <form [formGroup]="modifierBouteilleForm" action="">
+        <!--Inputs-->
         <mat-form-field appearance="outline">
             <mat-label>Date d'achat :</mat-label>
             <input matInput formControlName="date_achat" placeholder="AAAA-MM-JJ">
@@ -34,6 +35,7 @@
         </mat-form-field>
     </form>
 </div>
+<!--Boutons-->
 <div mat-dialog-action [align]="'end'">
     <button mat-raised-button routerLink="" color="accent" [disabled]="!modifierBouteilleForm.dirty || !modifierBouteilleForm.valid" (click)="modifierBiere()">Modifier</button>
     <button mat-raised-button routerLink="" color="warn" mat-dialog-close>Cancel</button>
