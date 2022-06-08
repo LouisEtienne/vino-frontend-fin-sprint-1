@@ -56,7 +56,6 @@ export class DialogModifComponent implements OnInit {
             bouteille.id = this.editData.id_bouteille_cellier;
             this.bieroServ.modifierBouteille(bouteille).subscribe({
             next:(reponse)=>{
-                console.log(bouteille)
                 this.dialogRef.close('mod');  
             },
             error:(reponse)=>{

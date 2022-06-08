@@ -42,13 +42,11 @@ export class ApibieroService {
 
     /** GET requête pour afficher la gamme de bouteilles importées de la SAQ */
     getListeBouteilles():Observable<IListeProduit>{
-        console.log(this.http.get<IListeProduit>(this.url+'bouteilles'));
         return this.http.get<IListeProduit>(this.url+'bouteilles');
     }
 
     /** PUT requête pour augmanter la quantité de bouteilles avec le même id dans le cellier */
     getBouteillesCellierQuantiteAjoutee(data:IProduit):Observable<IListeProduit>{
-        console.log("getBouteilles");
         let httpOption = {
             headers : new HttpHeaders({
                 'Content-type' : 'application/json',
@@ -60,7 +58,6 @@ export class ApibieroService {
 
     /** PUT requête pour reduire la quantité de bouteilles avec le même id dans le cellier */
     deleteBouteillesCellierQuantiteAjoutee(data:IProduit):Observable<IListeProduit>{
-        console.log("getBouteilles");
         let httpOption = {
             headers : new HttpHeaders({
                 'Content-type' : 'application/json',

@@ -13,10 +13,8 @@ export class DetailsProduitComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(params=>{
-        console.log(params['id']);
-        this.apibiero.getBouteille(params['id']).subscribe(biere=>{
-            console.log(biere);
-        })
+            this.apibiero.getBouteille(params['id']).subscribe(biere=>{
+            })
         // Faire une requête avec le apibieroServ
         })
     }

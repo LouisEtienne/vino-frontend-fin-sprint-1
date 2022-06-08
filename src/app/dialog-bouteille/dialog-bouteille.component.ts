@@ -49,12 +49,9 @@ export class DialogBouteilleComponent implements OnInit {
     ajouterBouteille():void{
         if (this.creerBouteilleForm.valid) {
             this.creerBouteilleForm.value.id_bouteille = this.getBouteilleId;
-            console.log(this.creerBouteilleForm.value)
             let bouteilles:any = this.creerBouteilleForm.value;  
-            console.log(bouteilles)
             this.bieroServ.ajouterBouteille(bouteilles).subscribe({
                 next:(reponse)=>{
-                    console.log('Vin ajoutee')
                     this.dialogRef.close('add');  
                 },
                 error:(reponse)=>{
