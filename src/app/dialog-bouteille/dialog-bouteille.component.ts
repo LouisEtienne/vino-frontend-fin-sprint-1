@@ -5,9 +5,9 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { IProduit } from '../iproduit';
 
 @Component({
-  selector: 'app-dialog-bouteille',
-  templateUrl: './dialog-bouteille.component.html',
-  styleUrls: ['./dialog-bouteille.component.scss']
+    selector: 'app-dialog-bouteille',
+    templateUrl: './dialog-bouteille.component.html',
+    styleUrls: ['./dialog-bouteille.component.scss']
 })
     
 export class DialogBouteilleComponent implements OnInit {

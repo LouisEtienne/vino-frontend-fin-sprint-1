@@ -5,14 +5,14 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { IProduit } from '../iproduit';
 
 @Component({
-  selector: 'app-dialog-modif',
-  templateUrl: './dialog-modif.component.html',
-  styleUrls: ['./dialog-modif.component.scss']
+    selector: 'app-dialog-modif',
+    templateUrl: './dialog-modif.component.html',
+    styleUrls: ['./dialog-modif.component.scss']
 })
 
 export class DialogModifComponent implements OnInit {
-  @Input() bouteille!:IProduit;
-  modifierBouteilleForm!:FormGroup;
+    @Input() bouteille!:IProduit;
+    modifierBouteilleForm!:FormGroup;
 
     constructor(
                     private formBuilder: FormBuilder,
