@@ -4,6 +4,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../Auth/auth.service';
 import { IProduit } from '../iproduit';
 import { ApibieroService } from '../Serv/apibiero.service';
+import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
+import { IUser } from '../iuser';
 
 @Component({
     selector: 'app-entete',
@@ -15,6 +17,7 @@ export class EnteteComponent implements OnInit {
     estConnecte!:boolean;
     sTitre!:string;
     bouteille!:IProduit;
+    loggedUser!:IUser;
 
     constructor(private authServ:AuthService, private bieroServ:ApibieroService, public dialog: MatDialog) {
         
@@ -22,12 +25,38 @@ export class EnteteComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.authServ.statut().subscribe(bLogin=>{
-        this.estConnecte = bLogin;
-        })
+        this.authServ.getLoggedUser().subscribe((data: any) => { this.loggedUser = data.data; })
+        // this.authServ.statut().subscribe(bLogin=>{
+        // this.estConnecte = bLogin;
+        // })
         this.authServ.getTitre().subscribe(leTitre =>{
         this.sTitre = leTitre;
         })
     }
+
+    /** Bouton Ajouter une bouteille */
+    openLogin(): void {
+        this.dialog.open(DialogLoginComponent, {
+            width: '30%',
+            data: this.loggedUser
+        }).afterClosed().subscribe(res=>{
+            alert('logged in');
+            // this.getLoggedUser();
+        });
+    }
+
+
+    // getLoggedUser(): any{
+    //     let user:IUser;
+    //     this.authServ.getLoggedUser().subscribe({
+    //         next:(res)=>{
+    //             user: res;
+    //         },
+    //         error:(err)=>{
+    //             alert("erreur")
+    //         }
+    //     })
+    //     return user;
+    // }
 
 }

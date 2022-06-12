@@ -20,6 +20,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {DialogBouteilleComponent } from './dialog-bouteille/dialog-bouteille.component';
+import {DialogLoginComponent } from './dialog-login/dialog-login.component';
+// import {DialogRegisterComponent } from './dialog-register/dialog-register.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DialogModifComponent } from './dialog-modif/dialog-modif.component';
 import {MatSelectModule} from '@angular/material/select';
@@ -34,7 +36,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     NonTrouveComponent,
     DetailsProduitComponent,
     DialogBouteilleComponent,
-    DialogModifComponent
+    DialogModifComponent,
+    DialogLoginComponent,
+    // DialogRegisterComponent,
   ],
   entryComponents:[DialogBouteilleComponent],
   imports: [

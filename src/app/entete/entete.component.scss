@@ -15,7 +15,16 @@ mat-toolbar{
 }
 
 .header__nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: rgb(126, 10, 10);
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    width: 33%;
 }
 
 .header__logo{

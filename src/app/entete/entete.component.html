@@ -1,6 +1,12 @@
 <mat-toolbar class="header__nav" color="warn">
-    <button class="header__logo" routerLink="/" mat-fab aria-label="Example icon button with a delete icon">
-        Vino
+    <div class="logo">
+        <button class="header__logo" routerLink="/" mat-fab aria-label="Example icon button with a delete icon">
+            Vino
+        </button>
+        <span><h1 class="header__title">&nbsp;{{sTitre}}</h1></span>
+    </div>
+    
+    <button mat-raised-button class="liste__btn" routerLink="" (click)="openLogin()" aria-label="Example icon button with a home icon">
+        Connexion
     </button>
-    <span><h1 class="header__title">&nbsp;{{sTitre}}</h1></span>
 </mat-toolbar>

@@ -10,7 +10,9 @@ import { IListeProduit } from '../iliste-produit';
 export class ApibieroService {
 
     /** L'adresse URL du webservice  */
-    url:string = "http://127.0.0.1:8000/webservice/php/bouteille/";
+    // url:string = "http://127.0.0.1:8000/webservice/php/bouteille/";
+    url:string = "https://celliers-backend.courshybride.com/bouteille/";
+    
     constructor(private http:HttpClient) { }
 
     /** GET requête pour afficher les bouteilles du cellier */
@@ -23,7 +25,7 @@ export class ApibieroService {
         let httpOption = {
             headers : new HttpHeaders({
                 'Content-type': 'application/json',
-                'Authorization' : 'Basic '+ btoa("biero:biero")
+                // 'Authorization' : 'Basic '+ btoa("biero:biero")
             })
         };
         return this.http.post<IProduit>(this.url + data.id, data, httpOption);
@@ -37,7 +39,7 @@ export class ApibieroService {
                 'Authorization' : 'Basic '+ btoa("biero:biero")
             })
         };
-        return this.http.put<IProduit>(this.url, data, httpOption);
+        return this.http.put<IProduit>(this.url+"bouteilles/", data, httpOption);
     }
 
     /** GET requête pour afficher la gamme de bouteilles importées de la SAQ */
@@ -50,7 +52,7 @@ export class ApibieroService {
         let httpOption = {
             headers : new HttpHeaders({
                 'Content-type' : 'application/json',
-                'Authorization' : 'Basic '+ btoa("biero:biero")
+                // 'Authorization' : 'Basic '+ btoa("biero:biero")
             })                                                                                                    
         };                                                                                                                  
         return this.http.put<IListeProduit>(this.url+data.id_bouteille_cellier+"/quantite/",httpOption);
@@ -61,7 +63,7 @@ export class ApibieroService {
         let httpOption = {
             headers : new HttpHeaders({
                 'Content-type' : 'application/json',
-                'Authorization' : 'Basic '+ btoa("biero:biero")
+                // 'Authorization' : 'Basic '+ btoa("biero:biero")
             })                                                                                               
         };                                                                                                                 
         return this.http.delete<IListeProduit>(this.url+data.id_bouteille_cellier+"/quantite/",httpOption);
