@@ -5,6 +5,7 @@ import { AuthService } from '../Auth/auth.service';
 import { IProduit } from '../iproduit';
 import { ApibieroService } from '../Serv/apibiero.service';
 import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
+import { DialogRegisterComponent } from '../dialog-register/dialog-register.component';
 import { IUser } from '../iuser';
 
 @Component({
@@ -41,6 +42,17 @@ export class EnteteComponent implements OnInit {
             data: this.loggedUser
         }).afterClosed().subscribe(res=>{
             alert('logged in');
+            // this.getLoggedUser();
+        });
+    }
+
+    /** Bouton Ajouter une bouteille */
+    openRegister(): void {
+        this.dialog.open(DialogRegisterComponent, {
+            width: '30%',
+            data: this.loggedUser
+        }).afterClosed().subscribe(res=>{
+            alert('registered');
             // this.getLoggedUser();
         });
     }

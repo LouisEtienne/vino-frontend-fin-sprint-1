@@ -48,6 +48,16 @@ export class AuthService {
     return this.http.put<IUser>(this.url,data,httpOption);
   }
 
+  register(data:any):Observable<any>{
+    let httpOption = {
+      headers : new HttpHeaders({
+          'Content-type' : 'application/json',
+          // 'Authorization' : 'Basic '+ btoa("biero:biero")
+      })                                                                                                    
+    };                                                                                                                  
+    return this.http.put<IUser>(this.url,data,httpOption);
+  }
+
   setConnexion(etatConnexion:boolean):void {
     this.etatConnexion = etatConnexion;
     sessionStorage.setItem("estConnecte", this.etatConnexion.toString());

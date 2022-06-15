@@ -15,10 +15,8 @@ mat-toolbar{
 }
 
 .header__nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: rgb(126, 10, 10);
+    
+    background-color: rgb(79, 2, 2);
 }
 
 .logo{
@@ -38,4 +36,8 @@ mat-toolbar{
 .header__title{
     color: rgb(233, 236, 205);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.liste__btn{
+    margin-left: 10px;
 }

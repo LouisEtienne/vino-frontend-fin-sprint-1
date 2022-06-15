@@ -12,14 +12,14 @@
             <input matInput formControlName="password" placeholder="Entrer votre mot de passe">
             <mat-hint></mat-hint>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <!--<mat-form-field appearance="outline">
             <mat-label>Confirme ton mot de passe :</mat-label>
-            <input matInput formControlName="confirm-password" placeholder="Confirmer votre mot de passe">
+            <input matInput formControlName="confirmpassword" placeholder="Confirmer votre mot de passe">
             <mat-hint></mat-hint>
-        </mat-form-field>
+        </mat-form-field>-->
     </form>
 </div>
 <!--Boutons-->
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="accent" [disabled]="!registerForm.dirty || !registerForm.valid" (click)="registerUser()">Ajouter</button>
+    <button mat-raised-button color="accent" [disabled]="!registerForm.dirty || !registerForm.valid" (click)="registerUser()">S'inscrire</button>
 </div>

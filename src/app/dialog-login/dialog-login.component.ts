@@ -2,7 +2,6 @@ import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from '../Auth/auth.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IProduit } from '../iproduit';
 import { IUser } from '../iuser';
 
 @Component({
@@ -20,7 +19,6 @@ export class DialogLoginComponent implements OnInit {
     constructor(
                     private formBuilder: FormBuilder,
                     public dialogRef: MatDialogRef<DialogLoginComponent>,
-                    @Inject(MAT_DIALOG_DATA) bouteille: IProduit,
                     private authServ: AuthService
                 ) { }
 
