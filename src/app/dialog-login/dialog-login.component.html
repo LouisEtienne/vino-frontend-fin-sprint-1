@@ -9,12 +9,14 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Mot de passe :</mat-label>
-            <input matInput formControlName="password" placeholder="Entrer votre mot de passe">
+            <input type="password" matInput formControlName="mot_passe" placeholder="Entrer votre mot de passe">
             <mat-hint></mat-hint>
         </mat-form-field>
     </form>
 </div>
 <!--Boutons-->
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="accent" [disabled]="!loginForm.dirty || !loginForm.valid" (click)="login()">Connexion</button>
+    <button mat-raised-button color="accent" [disabled]="!loginForm.dirty || !loginForm.valid" (click)="login()" [(ngModel)]="estConnecte">
+        Connexion
+    </button>
 </div>

@@ -6,7 +6,7 @@ export interface IUser {
     phone:string;
     adresse:string;
     connected:string;
-    password:string;
+    mot_passe:string;
     confirmpassword:string;
     id_ville:string;
 }

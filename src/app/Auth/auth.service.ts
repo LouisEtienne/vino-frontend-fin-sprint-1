@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  url:string = "https://celliers-backend.courshybride.com/user/";
+  url:string = "http://127.0.0.1:8000/webservice/php/usager/";
 
   etatConnexion:boolean = false;
 
@@ -33,30 +33,10 @@ export class AuthService {
     return this.estConnecte;
   }
 
-  /** GET requête pour afficher les bouteilles du cellier */
-  getLoggedUser():Observable<IUser>{
-    return this.http.get<IUser>(this.url);
-}
-
-  login(data:any):Observable<any>{
-    let httpOption = {
-      headers : new HttpHeaders({
-          'Content-type' : 'application/json',
-          // 'Authorization' : 'Basic '+ btoa("biero:biero")
-      })                                                                                                    
-    };                                                                                                                  
-    return this.http.put<IUser>(this.url,data,httpOption);
-  }
-
-  register(data:any):Observable<any>{
-    let httpOption = {
-      headers : new HttpHeaders({
-          'Content-type' : 'application/json',
-          // 'Authorization' : 'Basic '+ btoa("biero:biero")
-      })                                                                                                    
-    };                                                                                                                  
-    return this.http.put<IUser>(this.url,data,httpOption);
-  }
+//   /** GET requête pour afficher les bouteilles du cellier */
+//   getLoggedUser():Observable<IUser>{
+//     return this.http.get<IUser>(this.url);
+// }
 
   setConnexion(etatConnexion:boolean):void {
     this.etatConnexion = etatConnexion;

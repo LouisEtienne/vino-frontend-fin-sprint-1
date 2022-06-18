@@ -1,0 +1,75 @@
+{
+  "usager": [
+    {
+      "id": 1,
+      "nom": "Tsyplenkov",
+      "prenom": "Vsevolod",
+      "courriel": "vtsy@gmail.com",
+      "phone": "514-555-5555",
+      "address": "1234 rue goodfield",
+      "connecte": "false",
+      "mot_passe": "123456",
+      "id_ville": ""
+    },
+    {
+      "courriel": "lo@gmail.com",
+      "mot_passe": "123456",
+      "id": 2
+    },
+    {
+      "courriel": "bita@gmail.com",
+      "mot_passe": "123456",
+      "id": 3
+    },
+    {
+      "courriel": "gilles@gmail.com",
+      "mot_passe": "123456",
+      "id": 4
+    },
+    {
+      "courriel": "luc@gmail.com",
+      "mot_passe": "123456",
+      "id": 5
+    },
+    {
+      "courriel": "marie@gmail.com",
+      "mot_passe": "123456",
+      "id": 6
+    },
+    {
+      "courriel": "carl@gmail.com",
+      "mot_passe": "123456",
+      "id": 7
+    },
+    {
+      "courriel": "Jean@gmail.com",
+      "mot_passe": "123456",
+      "id": 8
+    },
+    {
+      "courriel": "Dmitriy",
+      "mot_passe": "123456",
+      "id": 9
+    },
+    {
+      "courriel": "florant@gmail.com",
+      "mot_passe": "123456",
+      "id": 10
+    },
+    {
+      "courriel": "lise@gmail.com",
+      "mot_passe": "123456",
+      "id": 11
+    },
+    {
+      "courriel": "Bita2@gmail.com",
+      "mot_passe": "123456",
+      "id": 12
+    },
+    {
+      "courriel": "charles@gmail.com",
+      "mot_passe": "123456",
+      "id": 13
+    }
+  ]
+}

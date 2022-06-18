@@ -1,12 +1,13 @@
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../Auth/auth.service';
 import { IProduit } from '../iproduit';
 import { ApibieroService } from '../Serv/apibiero.service';
 import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
 import { DialogRegisterComponent } from '../dialog-register/dialog-register.component';
 import { IUser } from '../iuser';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-entete',
@@ -18,18 +19,19 @@ export class EnteteComponent implements OnInit {
     estConnecte!:boolean;
     sTitre!:string;
     bouteille!:IProduit;
-    loggedUser!:IUser;
+    @Input() loggedUser:boolean=true;
 
-    constructor(private authServ:AuthService, private bieroServ:ApibieroService, public dialog: MatDialog) {
-        
+
+    constructor(private authServ:AuthService, private route:Router, private bieroServ:ApibieroService, public dialog: MatDialog) {
     }
 
     ngOnInit(): void {
 
-        this.authServ.getLoggedUser().subscribe((data: any) => { this.loggedUser = data.data; })
-        // this.authServ.statut().subscribe(bLogin=>{
-        // this.estConnecte = bLogin;
-        // })
+        // this.loggedUser = 'false';
+        this.authServ.statut().subscribe(bLogin=>{
+            this.estConnecte = bLogin;
+        })
+        
         this.authServ.getTitre().subscribe(leTitre =>{
         this.sTitre = leTitre;
         })
@@ -41,7 +43,7 @@ export class EnteteComponent implements OnInit {
             width: '30%',
             data: this.loggedUser
         }).afterClosed().subscribe(res=>{
-            alert('logged in');
+            // alert('logged in');
             // this.getLoggedUser();
         });
     }
@@ -52,9 +54,20 @@ export class EnteteComponent implements OnInit {
             width: '30%',
             data: this.loggedUser
         }).afterClosed().subscribe(res=>{
-            alert('registered');
+            // alert('registered');
             // this.getLoggedUser();
         });
+    }
+
+    logout():boolean{
+        this.authServ.setConnexion(!this.estConnecte);
+        this.authServ.setTitre('Accueil');
+        this.route.navigateByUrl("");
+        return this.authServ.getConnexion();
+    }
+
+    connect():boolean{
+        return this.authServ.getConnexion();
     }
 
 

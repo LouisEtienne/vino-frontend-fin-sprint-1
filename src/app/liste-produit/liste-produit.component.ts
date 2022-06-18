@@ -33,6 +33,7 @@ export class ListeProduitComponent implements OnInit {
     ngOnInit(): void {
         this.getAllBouteillesCellier();
         this.authServ.setTitre("Mon cellier");
+        this.authServ.setConnexion(true);
     }
 
     /** Liste des bouteilles du cellier */
