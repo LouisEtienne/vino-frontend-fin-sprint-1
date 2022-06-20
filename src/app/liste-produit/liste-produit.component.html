@@ -2,7 +2,7 @@
     
             <!--Bouton Ajouter-->
             <div class="create-btn">
-                <a class="liste__btn-saq-creer fill" mat-raised-button routerLink="liste" (click)="openDialog()">Ajouter une bouteille</a>
+                <a class="liste__btn-saq-creer fill" mat-raised-button (click)="openDialog()">Ajouter une bouteille</a>
             </div>
             <mat-form-field appearance="standard">
             <!--Filtre-->
@@ -48,14 +48,17 @@
                     <ng-container matColumnDef="action">
                         <th class="centre" mat-header-cell *matHeaderCellDef>Action</th>
                         <td class="centre" mat-cell *matCellDef="let bouteille"> 
-                            <button class="liste__btn" routerLink="liste" (click)="ajouterQuantiteBouteilleCellier(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon"><!--(click)="effacerBiere(bouteille.id_bouteille)"-->
+                            <button class="liste__btn" (click)="ajouterQuantiteBouteilleCellier(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon"><!--(click)="effacerBiere(bouteille.id_bouteille)"-->
                                 <mat-icon>add</mat-icon>
                             </button>
-                            <button class="liste__btn" routerLink="liste" (click)="boireQuantiteBouteilleCellier(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon"><!--(click)="effacerBiere(bouteille.id_bouteille)"-->
+                            <button class="liste__btn" (click)="boireQuantiteBouteilleCellier(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon"><!--(click)="effacerBiere(bouteille.id_bouteille)"-->
                             <mat-icon>remove</mat-icon>
                             </button>
-                            <button class="liste__btn" routerLink="liste" (click)="editDialog(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon">
+                            <button class="liste__btn" (click)="editDialog(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon">
                                 <mat-icon>edit</mat-icon>
+                            </button>
+                            <button class="liste__btn" (click)="deleteDialog(bouteille)" mat-mini-fab aria-label="Example icon button with a home icon">
+                                <mat-icon>delete</mat-icon>
                             </button>
                         </td>
                     </ng-container>

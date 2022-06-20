@@ -1,6 +1,6 @@
 export interface IProduit {
     id_bouteille_cellier:string;
-    id_bouteille:string;
+    id_bouteille:number;
     date_achat:string;
     garde_jusqua:string;
     notes:string;
